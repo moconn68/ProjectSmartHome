@@ -1,0 +1,4 @@
+/etc/init.d/mjpg-streamer start
+/etc/init.d/mjpg-streamer stop
+/etc/init.d/mjpg-streamer enable #run automatically
+http://omega-xxxx.local:8080/?action=stream
