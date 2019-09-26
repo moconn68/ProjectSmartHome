@@ -50,11 +50,12 @@ There are some particular aspects of the model which require additional configur
 
 # Using the Project
 
-Once you have set up the model and configued the Onion Omega2 (if necessary), you are ready to use the project. In order to access the smart home dashboard, do the following: ***TODO*** 
+Once you have set up the model and configued the Onion Omega2 (if necessary), you are ready to use the project. In order to access the smart home dashboard, do the following:
 
 1. Access the Node-Red application on your Onion
 2. Open the side panel in the dashboard category
 3. Click on the box in the top right corner of the menu to launch the dashboard
+
 # License
 
 
