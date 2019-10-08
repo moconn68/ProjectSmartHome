@@ -36,7 +36,7 @@ To run this scenario on our model, carry out the following steps:
 9. If step 8 is successful, you will see "KEY FOUND!" with the key following in brackets. This is the password to the WiFi network.
 10. To disable monitor mode and connect to the network, run `service NetworkManager restart` and connect using the newly obtained password.
 
-[Link to Reference Source]<http://lewiscomputerhowto.blogspot.com/2014/06/how-to-hack-wpawpa2-wi-fi-with-kali.html>
+[Link to Reference Source](http://lewiscomputerhowto.blogspot.com/2014/06/how-to-hack-wpawpa2-wi-fi-with-kali.html)
 
 ## 3. Obtaining Root Machine Access via SSH Dictionary Attack
 
@@ -49,5 +49,5 @@ On Unix-based systems, the "root" user is one that has full administrative acces
 5. To begin the attack via SSH, use the hydra command: `hydra -L /root/Desktop/users.txt -P /usr/share/wordlists/dirb/big.txt <Onion IP> ssh` . This will take some time, and may be unsuccessful. Keep trying with multiple password lists.
 6. Once the attack is successful and the password is cracked, search the output for the cracked password. Try to log into the Smart Home using ssh: `ssh root@<Onion IP>` and then when prompted enter the password. If this works, congratulations! You now have root access to the Smart Home and may do anything you please.
 
-[Link to Reference Source]<https://www.hackingarticles.in/6-ways-to-hack-ssh-login-password/>
+[Link to Reference Source](https://www.hackingarticles.in/6-ways-to-hack-ssh-login-password/)
  
