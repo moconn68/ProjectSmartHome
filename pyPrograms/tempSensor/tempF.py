@@ -1,11 +1,10 @@
-import lcdDriver
 import oneWire
 from temperatureSensor import TemperatureSensor
 
 # default address of i2c backpack is 0x3f by default
 lcdAddress = 0x3f
 # setup one wire temp sensor object
-oneWireGpio = 19
+oneWireGpio = 6
 pollingInterval = 1 #seconds
 
 # function to read the temp fron the one-wire temp sensore
@@ -25,23 +24,10 @@ def getTemp():
 
     return sensor.readValue()
 
-# function to display the temp on the LCD screeen
-
-def displayTemp(temp):
-    #setup LCD
-    lcd = lcdDriver.Lcd(lcdAddress)
-    lcd.backlightOn()
-
-    lcd.lcdDisplayStringList([
-        "Temperature : ",
-        str(temp) + " F"
-    ])
 def __main__():
     t = getTemp()
     #t is in Celsius, F for Fahrenheit
     F = (t * (9.0/5)) + 32
     print(F)
-    displayTemp(F)
 if __name__ == '__main__':
     __main__()
-
