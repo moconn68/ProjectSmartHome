@@ -4,7 +4,7 @@ from temperatureSensor import TemperatureSensor
 # default address of i2c backpack is 0x3f by default
 lcdAddress = 0x3f
 # setup one wire temp sensor object
-oneWireGpio = 6
+oneWireGpio = 19
 pollingInterval = 1 #seconds
 
 # function to read the temp fron the one-wire temp sensore
