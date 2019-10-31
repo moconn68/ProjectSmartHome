@@ -1,2 +1,2 @@
 #!/bin/bash
-ln -s /root/Pics /www/Pics
+ln -s ../Pics /www/Pics
