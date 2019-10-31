@@ -51,3 +51,10 @@ On Unix-based systems, the "root" user is one that has full administrative acces
 
 [Link to Reference Source](https://www.hackingarticles.in/6-ways-to-hack-ssh-login-password/)
  
+## 4. Using Unauthorized Access to Steal Home Information
+
+TODO
+
+## 5. Using Unauthorized Access to Manipulate Smart Home & Perpetrate Forced Entry
+
+TODO
