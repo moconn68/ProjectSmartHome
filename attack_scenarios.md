@@ -51,10 +51,34 @@ On Unix-based systems, the "root" user is one that has full administrative acces
 
 [Link to Reference Source](https://www.hackingarticles.in/6-ways-to-hack-ssh-login-password/)
  
-## 4. Using Unauthorized Access to Steal Home Information
+## 4. Using Unauthorized Access to Steal Information and Break Into 
 
-TODO
+Once an intruder has obtained root access to any computer system, they have full priviledges to view, modify, and execute code on the system. In this scenario, the level of influence an infiltrator could have in this way is demonstrated through the theft of sensitive information from the smart home network, manipulation of hardware components within the system from the attacking machine, and even obtaining physical access inside of the home by forced opening of the garage component.
 
-## 5. Using Unauthorized Access to Manipulate Smart Home & Perpetrate Forced Entry
+### Part 1 - Information Theft
+1. If not completed already, work through the previous scenarios to obtain root access into the smart home system.
+2. Use the `ls` command on the terminal to view the structure of the smart home system. It should contain the directory named `ProjectSmartHome`. As the name suggests, this is where all of the software running the system resides. Go into this directory with the command `cd ProjectSmartHome`.
+3. At this point, an attacker can go anywhere in the entire system's software architecture to view, steal, or manipulate any part of the system. For this scenario, first we will steal mock confidential financial documents from the server. From a hacker's perspective, this requires some intuition in navigating the file system to determine where these files might be contained. Use `cd Documents/Financial` to navigate to the directory containing mock user financial information.
+4. In this directory there should be a file called 'W2-Private.pdf'. As the name may imply, this is a mock W2 Wage and Tax Statement, a common income tax document in the United States. This document is only intended to be seen by those who absolutely need it, usually limited to the individual, their employer, and the government. It contains sensitive information about the person including their address, their employer and their addess, their income, and more. A hacker can obtain a wealth of valuable information from this. To steal and view this file for yourself, simply copy it over the ssh connection. 
+	+ Use `pwd` to obtain the full path to the file, and copy this output.
+	+ Terminate the current ssh connection with `exit`.
+	+ Use the scp command to copy the file as such: `scp root@192.168.3.1:<output from pwd step>/W2-Private.pdf ~` to copy the file to your local system's home directory. You may be required to re-enter the root password when doing this step.
+5. View the stolen W2 file in your local machine's home directory. If the last step was a success, you should be able to open and view it as a PDF simply by double-clicking on it, or opening it otherwise in your preferred PDF reader program.
+ 
+### Part 2 - False trigger of Hardware Components - Fire Alarm
 
-TODO
+1. Reconnect to the smart home as root using ssh. 
+2. Navigate to the directory named `pyPrograms`. As the name implies, this is where all of the programs which oversee operation of the smart home ecosystem reside, written in the popular Python programming language. In fact, this language is the second most used programming language, according to the [2019 Stack Overflow Developer Survey.](https://insights.stackoverflow.com/survey/2019) Additionally, one of its most common uses is for automation, so it is highly likely that in a real-life cyber intrusion scenario that the system is running Python at some level.
+3. Navigate into the 'buzzer' directory. This is where the code handling the operation of the fire alarm buzzer is contained.
+4. To activate the buzzer, simply run the Python code contained in the file 'turnOnF.py' by executing `python turnOnF.py`. You should hear the system beep as the fire alarm is activated.
+5. In this activity, it is demonstrated how easily hardware connected to a smart home environment can be manipulated if it is not properly secured. In the real world, if this were to happen, the family may instinctively run outside of their home and be put into danger due to the false trigger of a fire alarm.
+
+### Part 3 - Forced Entry via Connected Garage Door
+
+1. Navigate back to the 'pyPrograms' directory, and use `ls` to view its contents once again.
+2. Navigate into the 'Motor' directory. This contains all of the programs associated with operating the garage door's motor control.
+3. Much like how software development is typically structured, the names of these files themselves are descriptive enough to understand their function in the given context. If this was not the case, a close investigation within the code to analyze and determine their functionality would be necessary, but still quite simple. View the contents of of the programs 'open.py' and 'close.py' by running `cat <filename> to see how this is determined.
+4. To force the garage door to open without needing access to the smart home HMI, run `python open.py`. You should see the garage door open after a short delay.
+5. The door will remain open indefinitely in this manner. To close it, run `python close.py` and it will shut itself.
+
+In conclusion, the three components of this final scenario demonstrate both how simple and powerful it is to access and manipulate restricted aspects of a smart home system once root access is obtained. A malicious party could use this to steal highly sensitive information, manipulate the various components of your IoT connected smart home devices, and even gain direct physical access into your home. This is why it is imperative to be aware of these potential pitfalls and ensure that these smart home systems are implemented with high levels of both software and hardware security measures and failsafes.
